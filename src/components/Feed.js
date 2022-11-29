@@ -5,6 +5,7 @@ export default function Feed(props) {
     let newlist = [];
 
     newlist = props.list;
-    const listItems = newlist.map((listItem) => <FI alt={props.alt}>{listItem}</FI>);
+    // adding key={listItem.toString()} fixes the warning where that a key should be provided for list items.
+    const listItems = newlist.map((listItem) => <FI alt={props.alt} key={listItem.toString()}>{listItem}</FI>);
     return ( <div className={props.className} list={props.list}>{listItems}</div>);
 }

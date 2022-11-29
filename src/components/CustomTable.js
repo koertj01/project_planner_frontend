@@ -1,52 +1,35 @@
-import { React, Component, state } from "react";
+import React from 'react'
+import JsonData from '../data.json'
 
-// we need to convert the customers to data and allow for column filtering
-// we also need to add pagination if the table has more than n(rows)
-// additional the ability to select ordering by column and searching could be added 
-// lastly we could just build a new table and use a common endpoint
-
-class CustomTable extends React.Component {
-    constructor (props) {
-        super(props);
-        this.state = {
-            customers: []
-        }
-    }
-
-    componentDidMount() {
-        fetch("url/route")
-            .then(res => res.json())
-            .then(
-                (customers) => {
-                    this.setState({ customers: customers});
-                },
-                (error) => {
-                    // alert(error)/console.log; 
-                }
+function JsonDataDisplay() {
+    const DisplayData=JsonData.map(
+        (info) => {
+            return(
+                <tr>
+                    <td>{info.id}</td>
+                    <td>{info.name}</td>
+                    <td>{info.city}</td>
+                </tr>
             )
-    }
+        }
+    )
 
-    render() {
-        return (<table cellPadding={"0"} cellSpacing={"0"}>
-            <thead>
-                <tr>
-                    <th>Customer ID</th>
-                    <th>Name</th>
-                    <th>Country</th>
-                </tr>
-            </thead>
-
-            <tbody>
-                {this.state.customers.map(customer =>
-                <tr>
-                    <th>{customer.CustomerId}</th>
-                    <th>{customer.Name}</th>
-                    <th>{customer.Country}</th>
-                </tr>
-                )}
-            </tbody>
-        </table>);
-    }
+    return (
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Sr.No</th>
+                        <th>Name</th>
+                        <th>City</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {DisplayData}
+                </tbody>
+            </table>
+        </div>
+    )
 }
 
-export default CustomTable;
+export default JsonDataDisplay;
