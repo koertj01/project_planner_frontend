@@ -1,5 +1,10 @@
 import React from "react";
 
+
+
 export default function Header(props) {
-    return (<div classname={props.classname}><p className="text-center">Header</p></div>)
+    return (
+    <div className={props.className}>
+        <p className="text-center">{props.text}</p>
+    </div>)
 }

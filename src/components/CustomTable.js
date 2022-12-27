@@ -2,6 +2,10 @@ import React from 'react'
 import JsonData from '../data.json'
 
 function JsonDataDisplay() {
+
+    //we need to 'fetch' JsonData from the backend instead of importing a file, we could also write a 'header' in the 
+    //json to define the columns -- maybe define a table as a ~custom-doc~
+
     const DisplayData=JsonData.map(
         (info) => {
             return(
